@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
-use App\Models\ticket; // Đảm bảo sử dụng không gian tên chính xác
+use App\Models\ticket; 
 use Carbon\Carbon; // Để làm việc với ngày và thời gian
 use Illuminate\Support\Facades\Auth; // Để truy cập người dùng đã xác thực
 
@@ -134,7 +134,7 @@ class buyController extends Controller
 
         $userId = Auth::id();
         $selectedSeats = $request->input('chair', []);
-        $totalPrice = $request->input('total_price', 0);
+        $totalPrice = $request->input('total_price');
 
         $tickets = [];
 
@@ -145,7 +145,7 @@ class buyController extends Controller
                 'movie_id3' => $request->input('movie_id'),
                 'Id_lich_chieu2' => $request->input('lich_chieu_id'),
                 'gia' => $totalPrice,
-                'Ngay_đat_ve' => Carbon::now(),
+                'Ngay_dat_ve' => Carbon::now(),
                 'thanh_toan' => $request->input('pay'),
             ];
             $tickets[] = $ticket;
@@ -166,39 +166,7 @@ class buyController extends Controller
 
         $ch = [];
 
-        // foreach ($ticketList as $ticket) {
-        //     $lich_chieu_id = $ticket['lichChieuId'];
-        //     $movieId = $ticket['movieId'];
-        //     $chairs = $ticket['chairs'];
-
-        //     $ch[] = DB::table('rap_chieu')
-        //         ->join('lich_chieu', 'rap_chieu.rap_chieu_id', '=', 'lich_chieu.Id_rap2')
-        //         ->join('ghe_ngoi', 'rap_chieu.rap_chieu_id', '=', 'ghe_ngoi.Id_rap3')
-        //         ->join('movie', 'movie.movie_id', '=', 'lich_chieu.movie_id2')
-        //         ->join('ve', 've.Id_lich_chieu2', '=', 'rap_chieu.rap_chieu_id')
-        //         ->select(
-        //             'rap_chieu.Name_rap',
-        //             'ghe_ngoi.So_ghe',
-        //             'ghe_ngoi.ghe_ngoi_id',
-        //             'ghe_ngoi.Looi_ghe',
-        //             'ghe_ngoi.price',
-        //             'lich_chieu.ngayChieu',
-        //             'lich_chieu.strat',
-        //             'lich_chieu.end',
-        //             'movie.movie_name',
-        //             'movie.priceMovie',
-        //             'movie.movie_id',
-        //             'lich_chieu.lich_chieu_id'
-        //         )
-        //         ->where('ve.Id_users', $userId)
-        //         ->where('lich_chieu.lich_chieu_id', $lich_chieu_id)
-        //         ->where('movie.movie_id', $movieId)
-        //         ->where('ghe_ngoi.ghe_ngoi_id', $chairs)
-        //         ->first();
-        //     if ($result) {
-        //         $ch[] = $result;
-        //     }
-        // }
+        
         foreach ($ticketList as $ticket) {
             $lich_chieu_id = $ticket['lichChieuId'];
             $movieId = $ticket['movieId'];
@@ -227,7 +195,7 @@ class buyController extends Controller
                 ->where('lich_chieu.lich_chieu_id', $lich_chieu_id)
                 ->where('movie.movie_id', $movieId)
                 ->where('ghe_ngoi.ghe_ngoi_id', $chairs)
-                ->first(); // Use first() instead of get()
+                ->first(); 
 
             if ($result) {
                 $ch[] = $result;

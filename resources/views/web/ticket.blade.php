@@ -591,21 +591,23 @@
                                                                                         <div
                                                                                             style="display:flex; gap:20px">
                                                                                             <h4>
-                                                                                                <input type="checkbox"
+                                                                                                <input type="radio"
+                                                                                                    id="pay"
                                                                                                     name="pay"
-                                                                                                    value="bank">
+                                                                                                    value="bank" required>
                                                                                                 bank
                                                                                             </h4>
                                                                                             <h4>
-                                                                                                <input type="checkbox"
+                                                                                                <input type="radio"
+                                                                                                    id="pay"
                                                                                                     name="pay"
-                                                                                                    value="cash">
+                                                                                                    value="cash" required>
                                                                                                 cash
                                                                                             </h4>
                                                                                         </div>
 
                                                                                     </div>
-                                                                                   
+
                                                                                     @foreach ($chairsInfo as $ch)
                                                                                         @foreach ($ch as $info)
                                                                                             <div
@@ -637,15 +639,17 @@
                                                                                                 <h4>tổng giá vé:</h4>
                                                                                                 <ul>
                                                                                                     <li>
-                                                                                                        <h4
-                                                                                                            name="total_price">
-                                                                                                            {{ number_format($totalPrice) }}
+                                                                                                        <h4>
+                                                                                                            {{ number_format($info->priceMovie + $info->price) }}
                                                                                                             VND</h4>
                                                                                                     </li>
                                                                                                 </ul>
                                                                                                 <input type="hidden"
                                                                                                     name="movie_id"
                                                                                                     value="{{ $info->movie_id }}">
+                                                                                                <input type="hidden"
+                                                                                                    name="total_price"
+                                                                                                    value="{{ $info->priceMovie + $info->price }}">
                                                                                                 <input type="hidden"
                                                                                                     name="lich_chieu_id"
                                                                                                     value="{{ $info->lich_chieu_id }}">

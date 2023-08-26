@@ -83,6 +83,14 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Thêm ghế
                         </a>
+                        <a class="nav-link collapsed" href="{{ route('addShowTime') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Thêm thời gian chiếu
+                        </a>
+                        <a class="nav-link collapsed" href="{{ route('oder') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            danh sách đặt vé
+                        </a>
                         <a class="nav-link" href="login_out.php">
                             <div class="sb-nav-link-icon"><i class="fa-sharp fa-light fa-right-from-bracket"></i></div>
                             Đăng Xuất

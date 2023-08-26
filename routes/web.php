@@ -11,6 +11,8 @@ use App\Http\Controllers\showTimeController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\buyController;
+use App\Http\Controllers\oderController;
+
 
 
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +39,6 @@ Route::middleware('checkLogin::customer')->group(function () {
         return view('web.by');
     })->name('buy');
     Route::get('/buy/{lichChieuId}/{movieId}', [BuyController::class, 'buy'])->name('by');
-    // Route::post('save', [BuyController::class, 'save'])->name('save');
 
     Route::get('ticket', function () {
         return view('web.ticket');
@@ -121,4 +122,11 @@ Route::middleware('checkLogin::admin')->group(function () {
     })->name('addShowTime');
     Route::get('addSTime', [showTimeController::class, 'listMovie'])->name('addShowTime');
     Route::match(['get', 'post'], '/addtime/{rapId}/{movieId}', [showTimeController::class, 'addtime'])->name('addtime');
+
+    Route::get('/oder', function () {
+        return view('web.oder');
+    })->name('oder');
+    
+    Route::get('/oder', [oderController::class, 'order'])->name('oder');
+    
 });

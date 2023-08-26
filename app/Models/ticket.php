@@ -12,7 +12,11 @@ class ticket extends Model
 
     protected $primaryKey = 've_id '; // Khai báo khóa chính của bảng
 
-    protected $fillable = ['Id_users','ID_ghe2','movie_id3','Id_lich_chieu2','gia','Ngay_đat_ve','thanh_toan']; 
+    protected $fillable = ['Id_users','ID_ghe2','movie_id3','Id_lich_chieu2','gia','Ngay_dat_ve','thanh_toan']; 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }
  

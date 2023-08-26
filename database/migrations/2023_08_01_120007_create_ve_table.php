@@ -14,7 +14,7 @@ class CreateVeTable extends Migration
             $table->unsignedBigInteger('movie_id3');
             $table->unsignedBigInteger('Id_lich_chieu2');
             $table->float('gia');
-            $table->date('Ngay_đat_ve');
+            $table->date('Ngay_dat_ve');
             $table->string('thanh_toan');
             $table->timestamps();
 

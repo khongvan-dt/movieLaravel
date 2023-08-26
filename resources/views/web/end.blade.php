@@ -586,7 +586,7 @@
                                                                             <div class="amy-movie-item entry-item">
                                                                                 @if (session('insert'))
                                                                                     <div class="alert alert-success">
-                                                                                        bạn đã đặt vé thành công
+                                                                                      <h2>  Bạn đã đặt vé thành công</h2>
 
                                                                                     </div>
                                                                                 @endif
